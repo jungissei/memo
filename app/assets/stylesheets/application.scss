@@ -1,0 +1,137 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+
+body{
+    background-repeat:no-repeat;
+    background-color:#000c14;
+    color:#fff;
+}
+
+a{
+    color:#fff;
+
+    &:hover,
+    &:visited{
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    display:block;
+    margin: auto;
+    padding:2em;
+    background-color:#343a40;
+    border-radius:15px;
+
+    input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+}
+
+.bg-dark{
+    background-color:rgba(52, 58, 64, .7) !important;
+}
+
+.list-group-item{
+    background-color: rgba(52, 58, 64, 0.7);
+    border-color:#38444d;
+}
+
+.fs-0-8e{
+    font-size: .8em;
+}
+
+.liked{
+    color: rgb(224, 36, 94);
+
+    &:hover,
+    &:visited{
+        color: rgb(224, 36, 94);
+    }
+}
+
+.learn-card{
+
+    .learn-card__title{
+        text-align: center;
+        border-bottom:1px dotted #eee;
+        padding: 1em;
+    }
+
+    .learn-card__question{
+        padding:1em 1em 5em 1.5em;
+        position: relative;
+
+        &::before{
+            content:"Q.";
+            position: absolute;
+            top:1em;
+            left:0;
+        }
+    }
+
+    .learn-card__answer{
+        padding:1em 1em 5em;
+        padding-left: 1.5em;
+        position: relative;
+        display:none;
+
+        &::before{
+            content:"A.";
+            position: absolute;
+            top:1em;
+            left:0;
+        }
+    }
+
+    .learn-card__status{
+        padding: .5em;
+        border-top:1px dotted #eee;
+        margin-bottom:1em;
+        display:flex;
+        justify-content: space-around;
+        font-size: .8em;
+    }
+}
+
+.learn-status{
+    padding:1em;
+    display: none;
+}
+
+.pagination{
+    margin-top:1em;
+    justify-content: center;
+    a.page-link{
+        color:#007bff;
+    }
+}

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12 col-md-5 m-auto">
+    <h1>暗記カード一覧</h1>
+    <ul class="list-group mb-3">
+      <% @posts.each do |post| %>
+        <li class="list-group-item">
+          <div>Q.<%= post.question %></div>
+          <div class="text-right">
+            <div class="d-inline-block mr-2"><%= link_to '詳細', post_path(post) %></div>
+            <div class="d-inline-block mr-2"><%= link_to '編集', edit_post_path(post) %></div>
+            <div class="d-inline-block mr-2"><%= link_to '削除', post_path(post), method: :delete %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate @posts %>
+    <%= link_to '新規作成', new_post_path, class:"btn btn-lg btn-primary btn-block" %>
+  </div>
+</div>

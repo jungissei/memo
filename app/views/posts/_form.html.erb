@@ -1,0 +1,26 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(card_post.errors.count, "error") %> prohibited this card_post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field mb-3">
+    <div>クエスチョン</div>
+    <%= form.text_area :question, class:"form-control", rows:6 %>
+  </div>
+  <div class="field mb-3">
+    <div>アンサー</div>
+    <%= form.text_area :answer, class:"form-control", rows:6 %>
+  </div>
+  <div class="actions mb-3">
+    <%= form.submit(value:"投稿する", class:"btn btn-lg btn-primary btn-block") %>
+  </div>
+<% end %>

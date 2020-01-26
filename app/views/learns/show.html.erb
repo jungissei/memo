@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-12 col-md-5 m-auto">
+    <div class="learn-card">
+      <div class="learn-card__title">問題</div>
+      <div class="learn-card__question"><%= @post.question %></div>
+      <div class="learn-card__answer"><%= @post.answer %></div>
+      <div class="learn-card__status">
+        <div>
+          学習回数:<%= @post.num_answer %>回目
+        </div>
+        <div>
+          余裕回数:<%= @post.num_correct %>回目
+        </div>
+      </div>
+    </div>
+    <div class="button-answer"><%= link_to '答えを見る', '', class:"btn btn-lg btn-primary btn-block" %></div>
+
+    <div class="learn-status">
+      <%= form_with(url: learn_path(@post), method: :put, local: true, id: 'form-learn-status') do |form| %>
+        <% if @post.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+            <ul>
+              <% post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="custom-control custom-radio custom-control-inline">
+          <%= form.radio_button :understand_lv, 0, class: 'custom-control-input' %>
+          <%= form.label :understand_lv_0, 'わからない', class: 'custom-control-label' %>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <%= form.radio_button :understand_lv, 1, class: 'custom-control-input' %>
+          <%= form.label :understand_lv_1, '難しい', class: 'custom-control-label' %>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <%= form.radio_button :understand_lv, 2, class: 'custom-control-input' %>
+          <%= form.label :understand_lv_2, '普通', class: 'custom-control-label' %>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <%= form.radio_button :understand_lv, 3, class: 'custom-control-input' %>
+          <%= form.label :understand_lv_3, '余裕', class: 'custom-control-label' %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script type='text/javascript'>
+$('.button-answer').on('click', function() {
+  $('.learn-card__answer').css('display','block');
+  $('.learn-status').css('display','block');
+  $('.button-answer').css('display','none');
+  return false;
+});
+</script>
+
+
+<script type='text/javascript'>
+$('input:radio').change( function() {
+  $('#form-learn-status').submit();
+});
+</script>
